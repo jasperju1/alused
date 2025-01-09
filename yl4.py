@@ -5,4 +5,4 @@ if arv1 > arv2:
     print(arv2, "on miinimum")
 
 else:
-    print(arv1, "on miinimum"
+    print(arv1, "on miinimum")

@@ -20,12 +20,3 @@ elif vanus > 18:
 
 else: 
     vanus = int(input ("Sisestage enda vanus: "))
-
-if vanus < 18:
-    print("Sa oled liiga noor, et autot juhtida.")
-
-elif vanus == 18:
-    print("Palju õnne täisealiseks saamise puhul!")
-
-elif vanus > 18:
-    print("Sa võid autot juhtida.")
