@@ -4,20 +4,26 @@
 # Vale pakkumise korral annab arvuti vihje, kas pakkumine on õigest arvust suurem või väiksem. 
 # Pakkuda saab seni, kuni kasutaja on õige arvu pakkunud. (juhuarv - random)
 
-from random import randint
+import random
 
-number = randint(1, 100)
-print(number)
+question = "y"
 
-while True:
-    pakkumine = int(input("Paku mis arvu arvuti välja mõtles: "))
+while question == "y":
 
-    if pakkumine == number:
-        print("Pakkusid arvu õigesti!")
-        break
+    number = random.randint(1, 100)
+    print(number)
 
-    elif pakkumine > number:
-        print("Sinu arv on liiga suur, paku uuesti: ")
+    while True:
+        guess = int(input("Paku mis arvu arvuti välja mõtles: "))
 
-    elif pakkumine < number:
-        print("Sinu arv on liiga väike, paku uuesti: ")
+        if guess == number:
+            print("Pakkusid arvu õigesti!")
+            break
+
+        elif guess > number:
+            print("Sinu arv on liiga suur.")
+
+        elif guess < number:
+            print("Sinu arv on liiga väike.")    
+
+    question = input("Kas sa soovid uuesti mängida? (y/n): ")
