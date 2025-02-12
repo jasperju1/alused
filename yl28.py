@@ -1,19 +1,21 @@
-#https://medium.com/@carrascalx/i-wrote-a-python-program-calculate-the-most-commonly-used-words-in-subreddits-heres-what-i-found-584ff946a8dc
+# https://medium.com/@nishantsahoo/which-movie-should-i-watch-5c83a3c0f5b1
 # Loe läbi artikkel.
-# Kas suudad mõista ja selgitada, mis on API?
-# Kas suudad mõista ja selgitada, mis on pip?	
-# Kui saad aru, mis on PRAW, siis installi see ja testi, kas töötab. (vihjed: https://praw.readthedocs.io/en/latest/getting_started/quick_start.html,
-# https://www.reddit.com/prefs/apps/, https://www.reddit.com/r/redditdev/comments/5mzts3/what_do_you_put_in_for_redirect_uri_i_keep/)
-# Leia analoogselt artiklist kirjeldatule enim kasutatud sõnad r/Eesti sub-redditis.
+# Kas suudad mõista ja selgitada, mis on Web Scraping?
+# Millised on selle tegevuse eetilisuse ja viisakuse reeglid?
+# Tee ise artiklis kirjeldatud projekt läbi ja kirjuta programm.
+# Kohanda programmi Kuressaare Ametikooli tunniplaanist info kätte saamiseks.
 
-
+import os
+from dotenv import load_dotenv
 import praw
 import matplotlib.pyplot as plt
 
+load_dotenv()
+
 reddit = praw.Reddit(
-    client_id='MJIIVc_Hy1y4uBKHUVBq0g',
-    client_secret='zBEcybfj_DDhchk5N1MxQVpYfR-KwQ',
-    user_agent='windows:com.example.myredditapp:v1.2.3 (by u/SneakyRatSausage)'
+    client_id=os.getenv('CLIENT_ID'),
+    client_secret=os.getenv('CLIENT_SECRET'),
+    user_agent=os.getenv('USER_AGENT')
 )
 
 # print(reddit.read_only)
@@ -21,7 +23,6 @@ reddit = praw.Reddit(
 words = []
 
 commonWords = ['on', 'ja', 'et', 'ei', 'see', 'kui', 'ka', 'aga', 'siis', '', 'seda', 'oma', 'oli', 'mis', 'sa', 'saab', 'ta', 'või', 'palju', 'ole', 'ning', 'kas', 'need', 'selle', 'kes', 'ise', 'pole','mida', 'nagu', 'väga', 'ma', 'ikka', 'nüüd''ära', 'olla', 'kuidas', 'oleks',]
-
 
 for submission in reddit.subreddit("Eesti").hot(limit=5):
     submission.comments.replace_more(limit=0)
